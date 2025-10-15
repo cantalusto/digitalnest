@@ -1,0 +1,123 @@
+{
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre Nós",
+    "services": "Serviços",
+    "portfolio": "Portfólio",
+    "contact": "Contato"
+  },
+  "home": {
+    "hero": "Seu ninho de criatividade digital.",
+    "title": "Construindo sua presença digital com inovação e propósito",
+    "subtitle": "Transformamos ideias em experiências digitais marcantes",
+    "cta": "Fale Conosco",
+    "featuredServices": "Nossos Principais Serviços",
+    "stats": {
+      "clients": "Clientes",
+      "satisfaction": "Satisfação",
+      "countries": "Países",
+      "roi": "ROI Médio"
+    },
+    "features": {
+      "innovative": {
+        "title": "Design Inovador",
+        "description": "Interfaces modernas que encantam e convertem"
+      },
+      "performance": {
+        "title": "Performance Extrema",
+        "description": "Velocidade e otimização em cada detalhe"
+      },
+      "results": {
+        "title": "Resultados Comprovados",
+        "description": "Estratégias baseadas em dados reais"
+      }
+    },
+    "whyChooseUs": "Por que nos escolher?",
+    "whyChooseUsSubtitle": "Combinamos criatividade, tecnologia e estratégia",
+    "cta2": {
+      "title": "Pronto para começar?",
+      "subtitle": "Vamos transformar sua visão em realidade digital",
+      "button": "Fale Conosco"
+    }
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "subtitle": "Somos uma agência digital focada em inovação e resultados",
+    "mission": "Missão",
+    "missionText": "Criar soluções digitais que impulsionam o crescimento e a transformação dos nossos clientes.",
+    "vision": "Visão",
+    "visionText": "Ser referência em inovação digital, entregando experiências únicas e memoráveis.",
+    "values": "Valores",
+    "valuesText": "Inovação, Qualidade, Transparência e Comprometimento com resultados.",
+    "team": "Nossa Equipe"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "subtitle": "Soluções completas para sua presença digital",
+    "webDev": {
+      "title": "Desenvolvimento Web",
+      "description": "Sites e aplicações web modernas, responsivas e performáticas."
+    },
+    "design": {
+      "title": "Design UI/UX",
+      "description": "Interfaces intuitivas e experiências de usuário memoráveis."
+    },
+    "branding": {
+      "title": "Branding Digital",
+      "description": "Construção e fortalecimento da identidade da sua marca."
+    },
+    "marketing": {
+      "title": "Marketing Digital",
+      "description": "Estratégias eficazes para aumentar sua presença online."
+    },
+    "learnMore": "Saiba mais"
+  },
+  "portfolio": {
+    "title": "Portfólio",
+    "subtitle": "Projetos que transformam negócios",
+    "viewMore": "Ver mais",
+    "projects": {
+      "ecommerce": {
+        "title": "E-commerce Moderno",
+        "description": "Plataforma completa de vendas online"
+      },
+      "corporate": {
+        "title": "Site Corporativo",
+        "description": "Presença digital profissional"
+      },
+      "app": {
+        "title": "Aplicativo Mobile",
+        "description": "Experiência mobile nativa"
+      },
+      "dashboard": {
+        "title": "Dashboard Analytics",
+        "description": "Visualização de dados em tempo real"
+      }
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Vamos conversar sobre seu próximo projeto",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "send": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "success": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "error": "Erro ao enviar mensagem. Tente novamente.",
+    "required": "Este campo é obrigatório",
+    "invalidEmail": "E-mail inválido",
+    "followUs": "Siga-nos"
+  },
+  "footer": {
+    "quickLinks": "Links Rápidos",
+    "contactInfo": "Contato",
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Feito com",
+    "by": "por"
+  },
+  "theme": {
+    "light": "Modo Claro",
+    "dark": "Modo Escuro"
+  }
+}

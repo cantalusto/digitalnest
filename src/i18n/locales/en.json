@@ -1,0 +1,123 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": "Your nest of digital creativity.",
+    "title": "Building your digital presence with innovation and purpose",
+    "subtitle": "We transform ideas into remarkable digital experiences",
+    "cta": "Contact Us",
+    "featuredServices": "Our Main Services",
+    "stats": {
+      "clients": "Clients",
+      "satisfaction": "Satisfaction",
+      "countries": "Countries",
+      "roi": "Average ROI"
+    },
+    "features": {
+      "innovative": {
+        "title": "Innovative Design",
+        "description": "Modern interfaces that enchant and convert"
+      },
+      "performance": {
+        "title": "Extreme Performance",
+        "description": "Speed and optimization in every detail"
+      },
+      "results": {
+        "title": "Proven Results",
+        "description": "Strategies based on real data"
+      }
+    },
+    "whyChooseUs": "Why choose us?",
+    "whyChooseUsSubtitle": "We combine creativity, technology and strategy",
+    "cta2": {
+      "title": "Ready to get started?",
+      "subtitle": "Let's turn your vision into digital reality",
+      "button": "Contact Us"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "We are a digital agency focused on innovation and results",
+    "mission": "Mission",
+    "missionText": "Create digital solutions that drive growth and transformation for our clients.",
+    "vision": "Vision",
+    "visionText": "Be a reference in digital innovation, delivering unique and memorable experiences.",
+    "values": "Values",
+    "valuesText": "Innovation, Quality, Transparency and Commitment to results.",
+    "team": "Our Team"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Complete solutions for your digital presence",
+    "webDev": {
+      "title": "Web Development",
+      "description": "Modern, responsive and high-performance websites and web applications."
+    },
+    "design": {
+      "title": "UI/UX Design",
+      "description": "Intuitive interfaces and memorable user experiences."
+    },
+    "branding": {
+      "title": "Digital Branding",
+      "description": "Building and strengthening your brand identity."
+    },
+    "marketing": {
+      "title": "Digital Marketing",
+      "description": "Effective strategies to increase your online presence."
+    },
+    "learnMore": "Learn more"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Projects that transform businesses",
+    "viewMore": "View more",
+    "projects": {
+      "ecommerce": {
+        "title": "Modern E-commerce",
+        "description": "Complete online sales platform"
+      },
+      "corporate": {
+        "title": "Corporate Website",
+        "description": "Professional digital presence"
+      },
+      "app": {
+        "title": "Mobile App",
+        "description": "Native mobile experience"
+      },
+      "dashboard": {
+        "title": "Analytics Dashboard",
+        "description": "Real-time data visualization"
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's talk about your next project",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully! We'll get back to you soon.",
+    "error": "Error sending message. Please try again.",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "followUs": "Follow us"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "by": "by"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  }
+}
