@@ -16,8 +16,7 @@ export const Section: React.FC<SectionProps> = ({
   const backgroundStyles = {
     light: 'bg-dark-100',
     dark: 'bg-dark',
-    gradient:
-      'bg-gradient-to-br from-primary/10 to-secondary/10',
+    gradient: 'bg-gradient-to-br from-primary/10 to-secondary/10',
   };
 
   return (

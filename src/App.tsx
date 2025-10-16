@@ -13,6 +13,9 @@ function App() {
   // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
+
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
   return (
@@ -20,7 +23,7 @@ function App() {
       <div className="min-h-screen flex flex-col relative">
         {/* Animated Network Background */}
         <AnimatedBackground />
-        
+
         {/* Content */}
         <div className="relative z-10">
           <Navbar />

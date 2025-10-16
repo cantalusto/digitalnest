@@ -198,7 +198,7 @@ export const Contact: React.FC = () => {
                     <h3 className="font-heading font-semibold text-gray-900 dark:text-white">
                       Email
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">contato@digitalnest.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">contato@digitalnest.com.br</p>
                   </div>
                 </div>
               </div>

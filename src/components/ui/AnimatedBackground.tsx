@@ -62,7 +62,7 @@ export const AnimatedBackground: React.FC = () => {
     const animate = () => {
       // Clear canvas completely (no blur trail)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Fill with gradient background
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
       gradient.addColorStop(0, '#000000');
@@ -127,7 +127,7 @@ export const AnimatedBackground: React.FC = () => {
         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
         ctx.fillStyle = '#10f080';
         ctx.fill();
-        
+
         // Glow effect
         ctx.beginPath();
         ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);

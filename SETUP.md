@@ -165,7 +165,7 @@ npm run type-check
 Para dúvidas ou problemas:
 
 - Abra uma issue no GitHub
-- Entre em contato via email: contato@digitalnest.com
+- Entre em contato via email: contato@digitalnest.com.br
 
 ---
 

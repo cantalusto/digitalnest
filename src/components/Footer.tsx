@@ -51,7 +51,9 @@ export const Footer: React.FC = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-heading font-semibold text-white mb-4">{t('footer.quickLinks')}</h4>
+              <h4 className="text-lg font-heading font-semibold text-white mb-4">
+                {t('footer.quickLinks')}
+              </h4>
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.path}>
@@ -68,9 +70,11 @@ export const Footer: React.FC = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-heading font-semibold text-white mb-4">{t('footer.contactInfo')}</h4>
+              <h4 className="text-lg font-heading font-semibold text-white mb-4">
+                {t('footer.contactInfo')}
+              </h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Email: contato@digitalnest.com</li>
+                <li>Email: contato@digitalnest.com.br</li>
                 <li>Tel: +55 (11) 9999-9999</li>
                 <li>São Paulo, SP - Brasil</li>
               </ul>

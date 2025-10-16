@@ -9,75 +9,207 @@ import { Container } from './ui/Container';
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
   const { t } = useTranslation();
   const location = useLocation();
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollPosition = window.scrollY;
+
+      // Clear previous timeout
+      clearTimeout(scrollTimeout);
+
+      // Debounce the scrolled state change for smoother transitions
+      scrollTimeout = setTimeout(() => {
+        setScrolled(scrollPosition > 100);
+      }, 50);
+
+      // Detect active section (immediate, no debounce)
+      const sections = ['home', 'stats', 'about', 'services', 'portfolio', 'contact'];
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          const sectionTop = offsetTop - 100; // Offset for navbar height
+          const sectionBottom = offsetTop + offsetHeight - 100;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            setActiveSection(`#${section}`);
+            break;
+          }
+        }
+      }
+
+      // If at very top, set to home
+      if (scrollPosition < 100) {
+        setActiveSection('#home');
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    handleScroll(); // Check on mount
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   const navItems = [
-    { path: '/', label: t('navbar.home') },
-    { path: '/about', label: t('navbar.about') },
-    { path: '/services', label: t('navbar.services') },
-    { path: '/portfolio', label: t('navbar.portfolio') },
-    { path: '/contact', label: t('navbar.contact') },
+    { path: '#home', label: t('navbar.home'), isAnchor: true },
+    { path: '#about', label: t('navbar.about'), isAnchor: true },
+    { path: '#services', label: t('navbar.services'), isAnchor: true },
+    { path: '#portfolio', label: t('navbar.portfolio'), isAnchor: true },
+    { path: '#contact', label: t('navbar.contact'), isAnchor: true },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path.startsWith('#')) {
+      return activeSection === path;
+    }
+    return location.pathname === path;
+  };
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string,
+    isAnchor: boolean
+  ) => {
+    if (isAnchor) {
+      e.preventDefault();
+      const element = document.querySelector(path);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', path);
+      }
+    }
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-transparent backdrop-blur-md shadow-lg border-b border-primary-500/20' : 'bg-transparent backdrop-blur-sm border-b border-transparent'
+      animate={{
+        y: 0,
+        backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.1)',
+      }}
+      transition={{
+        y: { duration: 0.3, ease: 'easeOut' },
+        backgroundColor: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }, // Smoother and longer
+      }}
+      className={`fixed top-0 w-full z-50 transition-all duration-700 ease-in-out ${
+        scrolled
+          ? 'backdrop-blur-md shadow-lg border-b border-primary-500/20'
+          : 'backdrop-blur-sm border-b border-transparent'
       }`}
     >
       <Container>
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
-              DigitalNest
-            </span>
-          </Link>
+          {/* Logo - Always rendered, but hidden when not scrolled */}
+          <motion.div
+            animate={{
+              opacity: scrolled ? 1 : 0,
+              x: scrolled ? 0 : -30,
+              scale: scrolled ? 1 : 0.8,
+            }}
+            transition={{
+              duration: 0.6,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+            style={{ pointerEvents: scrolled ? 'auto' : 'none' }}
+          >
+            <Link to="/" className="flex items-center space-x-3 group">
+              <span className="text-2xl font-display font-bold text-white drop-shadow-lg">
+                DigitalNest
+              </span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <Link key={item.path} to={item.path} className="relative px-4 py-2 group">
-                <motion.span
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive(item.path)
-                      ? 'text-primary-500'
-                      : 'text-accent-500 group-hover:text-primary-400'
-                  }`}
+            {navItems.map((item, index) =>
+              item.isAnchor ? (
+                <motion.a
+                  key={item.path}
+                  href={item.path}
+                  onClick={(e) => handleNavClick(e, item.path, item.isAnchor)}
+                  className="relative px-4 py-2 group cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {item.label}
-                </motion.span>
-                {isActive(item.path) && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
+                  <motion.span
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.3,
+                      ease: 'easeOut',
+                    }}
+                    className={`text-sm font-medium transition-all duration-300 ${
+                      isActive(item.path)
+                        ? 'text-primary-500'
+                        : 'text-white group-hover:text-primary-400'
+                    }`}
+                  >
+                    {item.label}
+                  </motion.span>
+                  {isActive(item.path) && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500 shadow-lg shadow-primary-500/50"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 35,
+                        mass: 0.8,
+                      }}
+                    />
+                  )}
+                </motion.a>
+              ) : (
+                <Link key={item.path} to={item.path} className="relative px-4 py-2 group">
+                  <motion.span
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`text-sm font-medium transition-colors ${
+                      isActive(item.path)
+                        ? 'text-primary-500'
+                        : 'text-white group-hover:text-primary-400'
+                    }`}
+                  >
+                    {item.label}
+                  </motion.span>
+                  {isActive(item.path) && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-2">
-            <LanguageToggle />
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.3 }}
+            >
+              <LanguageToggle />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
               <Link
                 to="/contact"
                 className="ml-2 px-6 py-2.5 rounded-full bg-primary-500 text-dark text-sm font-medium shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/50 transition-all"
@@ -88,13 +220,16 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             className="md:hidden p-2 rounded-lg hover:bg-dark-100 transition-colors text-accent-500"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </motion.button>
         </div>
       </Container>
 
