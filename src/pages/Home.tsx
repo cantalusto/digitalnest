@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, TrendingUp, Users, Award, Globe } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, TrendingUp, Users, Award, Globe, Code, Palette, Megaphone } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 
@@ -112,7 +112,7 @@ export const Home: React.FC = () => {
       {/* Stats Section */}
       <Section
         id="stats"
-        className="py-20 bg-dark/30 backdrop-blur-sm border-y border-primary-500/20"
+        className="py-20 bg-dark/50 backdrop-blur-md border-y border-primary-500/20"
       >
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -137,7 +137,7 @@ export const Home: React.FC = () => {
       </Section>
 
       {/* About Section */}
-      <Section id="about" className="py-32 bg-dark/20 backdrop-blur-sm">
+      <Section id="about" className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -189,9 +189,9 @@ export const Home: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Features Section */}
+      {/* Features Section - Why Choose Us */}
       <Section
-        id="services"
+        id="why-us"
         className="py-32 bg-dark/40 backdrop-blur-sm border-y border-primary-500/10"
       >
         <Container>
@@ -239,8 +239,85 @@ export const Home: React.FC = () => {
         </Container>
       </Section>
 
+      {/* Detailed Services Section */}
+      <Section id="services" className="py-32 bg-dark/20 backdrop-blur-sm">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+              Nossos Serviços
+            </h2>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+              Soluções completas para transformar sua presença digital
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                icon: Code,
+                title: 'Desenvolvimento Web',
+                description:
+                  'Criamos sites e aplicações web modernas, responsivas e otimizadas para performance. Utilizamos as tecnologias mais recentes para garantir a melhor experiência do usuário.',
+                features: ['React & Next.js', 'Progressive Web Apps', 'E-commerce', 'APIs & Integrações'],
+              },
+              {
+                icon: Palette,
+                title: 'Design UI/UX',
+                description:
+                  'Design focado na experiência do usuário, com interfaces intuitivas e atraentes. Criamos identidades visuais que conectam sua marca ao público.',
+                features: ['Design Responsivo', 'Prototipagem', 'Design Systems', 'Testes de Usabilidade'],
+              },
+              {
+                icon: TrendingUp,
+                title: 'Branding & Identidade',
+                description:
+                  'Construímos marcas fortes e memoráveis. Desenvolvemos identidades visuais completas que comunicam os valores e a essência do seu negócio.',
+                features: ['Logo & Identidade Visual', 'Manual de Marca', 'Material Gráfico', 'Rebranding'],
+              },
+              {
+                icon: Megaphone,
+                title: 'Marketing Digital',
+                description:
+                  'Estratégias de marketing digital para aumentar sua visibilidade online e gerar resultados mensuráveis. Do planejamento à execução.',
+                features: ['SEO & SEM', 'Social Media', 'Content Marketing', 'Analytics & Reports'],
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-8 rounded-3xl bg-dark/60 backdrop-blur-md border border-primary-500/20 hover:border-primary-500/40 transition-all"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 mb-6 shadow-lg shadow-primary-500/30">
+                  <service.icon className="w-8 h-8 text-dark" />
+                </div>
+
+                <h3 className="text-2xl font-display font-bold text-white mb-4">{service.title}</h3>
+                <p className="text-white/70 mb-6">{service.description}</p>
+
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-primary-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       {/* Portfolio Section */}
-      <Section id="portfolio" className="py-32 bg-dark/20 backdrop-blur-sm">
+      <Section id="portfolio" className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -305,7 +382,7 @@ export const Home: React.FC = () => {
       </Section>
 
       {/* Contact Section */}
-      <Section id="contact" className="py-32 bg-transparent">
+      <Section id="contact" className="py-32 bg-dark/40 backdrop-blur-md border-y border-primary-500/10">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

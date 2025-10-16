@@ -13,21 +13,21 @@ function App() {
   // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
-
-    // Smooth scroll behavior
-    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Remove default smooth scroll to allow custom animation
+    document.documentElement.style.scrollBehavior = 'auto';
   }, []);
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col relative">
+      <div className="min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Animated Network Background */}
         <AnimatedBackground />
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 w-full">
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

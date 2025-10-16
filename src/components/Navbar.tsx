@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
       }, 50);
 
       // Detect active section (immediate, no debounce)
-      const sections = ['home', 'stats', 'about', 'services', 'portfolio', 'contact'];
+      const sections = ['home', 'stats', 'about', 'why-us', 'services', 'portfolio', 'contact'];
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -82,8 +82,34 @@ export const Navbar: React.FC = () => {
       e.preventDefault();
       const element = document.querySelector(path);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', path);
+        const navbarHeight = 80; // Height of navbar
+        const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 1200; // 1.2 seconds for smooth scroll
+        let start: number | null = null;
+
+        // Easing function for smooth animation (ease-in-out-cubic)
+        const easeInOutCubic = (t: number): number => {
+          return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+        };
+
+        const animation = (currentTime: number) => {
+          if (start === null) start = currentTime;
+          const timeElapsed = currentTime - start;
+          const progress = Math.min(timeElapsed / duration, 1);
+          const ease = easeInOutCubic(progress);
+
+          window.scrollTo(0, startPosition + distance * ease);
+
+          if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+          } else {
+            window.history.pushState(null, '', path);
+          }
+        };
+
+        requestAnimationFrame(animation);
       }
     }
     setIsOpen(false);
@@ -251,17 +277,31 @@ export const Navbar: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`block py-3 px-4 rounded-xl text-base font-medium transition-all ${
-                        isActive(item.path)
-                          ? 'bg-gradient-to-r from-primary-900/30 to-secondary-900/30 text-secondary-500'
-                          : 'text-accent-300 hover:bg-dark-100'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                    {item.isAnchor ? (
+                      <a
+                        href={item.path}
+                        onClick={(e) => handleNavClick(e, item.path, item.isAnchor)}
+                        className={`block py-3 px-4 rounded-xl text-base font-medium transition-all cursor-pointer ${
+                          isActive(item.path)
+                            ? 'bg-gradient-to-r from-primary-900/30 to-secondary-900/30 text-primary-500'
+                            : 'text-accent-300 hover:bg-dark-100'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block py-3 px-4 rounded-xl text-base font-medium transition-all ${
+                          isActive(item.path)
+                            ? 'bg-gradient-to-r from-primary-900/30 to-secondary-900/30 text-primary-500'
+                            : 'text-accent-300 hover:bg-dark-100'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
                 <div className="flex items-center justify-center pt-6 border-t border-dark-50">
