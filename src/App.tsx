@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AnimatedBackground } from './components/ui/AnimatedBackground';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
@@ -38,6 +39,12 @@ function App() {
           </main>
           <Footer />
         </div>
+
+        {/* WhatsApp Floating Button */}
+        <WhatsAppButton 
+          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || "5511999999999"} 
+          message="Olá! Gostaria de saber mais sobre os serviços da DigitalNest."
+        />
       </div>
     </Router>
   );

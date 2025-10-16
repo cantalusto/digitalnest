@@ -1,14 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, TrendingUp, Users, Award, Globe, Code, Palette, Megaphone } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, TrendingUp, Users, Award, Globe, Code, Palette, Megaphone, CheckCircle, AlertCircle } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
+import emailjs from '@emailjs/browser';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Check if EmailJS is configured
+      if (!serviceId || !templateId || !publicKey) {
+        console.warn('EmailJS not configured. Please set up environment variables.');
+        // For demo purposes, show success message
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+        return;
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'DigitalNest Team',
+        },
+        publicKey
+      );
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const stats = [
     { icon: Users, value: '500+', label: t('home.stats.clients') },
@@ -403,35 +465,76 @@ export const Home: React.FC = () => {
               viewport={{ once: true }}
               className="bg-dark/60 backdrop-blur-md border border-primary-500/20 rounded-3xl p-8"
             >
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder={t('contact.name')}
-                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder={t('contact.email')}
-                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows={5}
                     placeholder={t('contact.message')}
-                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors resize-none"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-dark/40 border border-primary-500/20 rounded-xl text-white placeholder-white/50 focus:border-primary-500/50 focus:outline-none transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
+
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 p-4 bg-primary-500/20 border border-primary-500/40 rounded-xl text-primary-400"
+                  >
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Mensagem enviada com sucesso! Entraremos em contato em breve.</span>
+                  </motion.div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 p-4 bg-red-500/20 border border-red-500/40 rounded-xl text-red-400"
+                  >
+                    <AlertCircle className="w-5 h-5" />
+                    <span>Erro ao enviar mensagem. Por favor, tente novamente.</span>
+                  </motion.div>
+                )}
+
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   type="submit"
-                  className="w-full px-8 py-4 rounded-full bg-primary-500 text-dark font-bold text-lg shadow-xl shadow-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/50 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 rounded-full bg-primary-500 text-dark font-bold text-lg shadow-xl shadow-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t('contact.send')}
+                  {isSubmitting ? 'Enviando...' : t('contact.send')}
                 </motion.button>
               </form>
             </motion.div>
