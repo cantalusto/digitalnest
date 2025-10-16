@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageToggle } from './LanguageToggle';
 import { Container } from './ui/Container';
+import { scrollTo } from '../utils/scroll';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,8 @@ export const Navbar: React.FC = () => {
       const element = document.querySelector(path);
       if (element) {
         const navbarHeight = 80; // Height of navbar
-        const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        const targetPosition =
+          element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         const duration = 1200; // 1.2 seconds for smooth scroll
@@ -236,12 +238,12 @@ export const Navbar: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <Link
-                to="/contact"
+              <button
+                onClick={() => scrollTo('contact')}
                 className="ml-2 px-6 py-2.5 rounded-full bg-primary-500 text-dark text-sm font-medium shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/50 transition-all"
               >
                 {t('navbar.contact')}
-              </Link>
+              </button>
             </motion.div>
           </div>
 
