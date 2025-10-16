@@ -74,9 +74,9 @@ export const Footer: React.FC = () => {
                 {t('footer.contactInfo')}
               </h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Email: contato@digitalnest.com.br</li>
+                <li>Email: contato@digitalnest.app.br</li>
                 <li>Tel: +55 (11) 9999-9999</li>
-                <li>São Paulo, SP - Brasil</li>
+                <li>Recife, PE - Brasil</li>
               </ul>
             </div>
           </div>

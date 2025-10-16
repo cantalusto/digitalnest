@@ -44,18 +44,25 @@ export const Home: React.FC = () => {
         return;
       }
 
+      // Template parameters - adjust these names to match your EmailJS template
+      const templateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        message: formData.message,
+        to_email: 'contato@digitalnest.app.br', // Your company email
+        reply_to: formData.email,
+      };
+
+      console.log('Sending email with params:', { serviceId, templateId, publicKey: publicKey.substring(0, 5) + '...' });
+
       await emailjs.send(
         serviceId,
         templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'DigitalNest Team',
-        },
+        templateParams,
         publicKey
       );
 
+      console.log('Email sent successfully!');
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
