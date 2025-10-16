@@ -35,14 +35,14 @@ export const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-dark/95 backdrop-blur-xl shadow-xl border-b border-dark-50' : 'bg-transparent backdrop-blur-md shadow-md border-b border-transparent'
+        scrolled ? 'bg-transparent backdrop-blur-md shadow-lg border-b border-primary-500/20' : 'bg-transparent backdrop-blur-sm border-b border-transparent'
       }`}
     >
       <Container>
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 via-accent-600 to-secondary-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
               DigitalNest
             </span>
           </Link>
@@ -57,8 +57,8 @@ export const Navbar: React.FC = () => {
                   transition={{ delay: index * 0.1 }}
                   className={`text-sm font-medium transition-colors ${
                     isActive(item.path)
-                      ? 'text-secondary-500'
-                      : 'text-accent-300 group-hover:text-secondary-500'
+                      ? 'text-primary-500'
+                      : 'text-accent-500 group-hover:text-primary-400'
                   }`}
                 >
                   {item.label}
@@ -66,7 +66,7 @@ export const Navbar: React.FC = () => {
                 {isActive(item.path) && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -80,7 +80,7 @@ export const Navbar: React.FC = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to="/contact"
-                className="ml-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-sm font-medium shadow-lg hover:shadow-xl transition-shadow"
+                className="ml-2 px-6 py-2.5 rounded-full bg-primary-500 text-dark text-sm font-medium shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/50 transition-all"
               >
                 {t('navbar.contact')}
               </Link>
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-dark-100 transition-colors text-accent-300"
+            className="md:hidden p-2 rounded-lg hover:bg-dark-100 transition-colors text-accent-500"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

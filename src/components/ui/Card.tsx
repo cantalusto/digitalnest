@@ -39,14 +39,14 @@ export const Card: React.FC<CardProps> = ({
     </>
   );
 
-  const baseStyles = `bg-dark-100 rounded-2xl shadow-xl border border-dark-50 overflow-hidden ${className}`;
+  const baseStyles = `bg-dark-100 rounded-2xl shadow-xl border border-primary-500/20 overflow-hidden ${className}`;
 
   if (hoverable) {
     return (
       <motion.div
         whileHover={{ scale: 1.05, y: -5 }}
         transition={{ duration: 0.3 }}
-        className={`${baseStyles} cursor-pointer hover:shadow-2xl`}
+        className={`${baseStyles} cursor-pointer hover:shadow-2xl hover:shadow-primary-500/30 hover:border-primary-500/50`}
         onClick={onClick}
       >
         {cardContent}
