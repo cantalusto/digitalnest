@@ -2,10 +2,24 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, TrendingUp, Users, Award, Globe, Code, Palette, Megaphone, CheckCircle, AlertCircle } from 'lucide-react';
+import {
+  ArrowRight,
+  Sparkles,
+  Zap,
+  TrendingUp,
+  Users,
+  Award,
+  Globe,
+  Code,
+  Palette,
+  Megaphone,
+  CheckCircle,
+  AlertCircle,
+} from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import emailjs from '@emailjs/browser';
+import Logo from '@/assets/logo.svg';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -113,21 +127,14 @@ export const Home: React.FC = () => {
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Main Title - DigitalNest */}
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-6 leading-tight"
+              className="w-80 mx-auto"
             >
-              <span
-                className="text-white drop-shadow-lg"
-                style={{
-                  textShadow: '0 0 30px rgba(16, 240, 128, 0.5), 0 2px 10px rgba(0,0,0,0.8)',
-                }}
-              >
-                DigitalNest
-              </span>
-            </motion.h1>
+              <img src={Logo} alt="" />
+            </motion.div>
 
             {/* Subtitle */}
             <motion.p
@@ -199,7 +206,10 @@ export const Home: React.FC = () => {
       </Section>
 
       {/* About Section */}
-      <Section id="about" className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10">
+      <Section
+        id="about"
+        className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10"
+      >
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -325,21 +335,36 @@ export const Home: React.FC = () => {
                 title: 'Desenvolvimento Web',
                 description:
                   'Criamos sites e aplicações web modernas, responsivas e otimizadas para performance. Utilizamos as tecnologias mais recentes para garantir a melhor experiência do usuário.',
-                features: ['React & Next.js', 'Progressive Web Apps', 'E-commerce', 'APIs & Integrações'],
+                features: [
+                  'React & Next.js',
+                  'Progressive Web Apps',
+                  'E-commerce',
+                  'APIs & Integrações',
+                ],
               },
               {
                 icon: Palette,
                 title: 'Design UI/UX',
                 description:
                   'Design focado na experiência do usuário, com interfaces intuitivas e atraentes. Criamos identidades visuais que conectam sua marca ao público.',
-                features: ['Design Responsivo', 'Prototipagem', 'Design Systems', 'Testes de Usabilidade'],
+                features: [
+                  'Design Responsivo',
+                  'Prototipagem',
+                  'Design Systems',
+                  'Testes de Usabilidade',
+                ],
               },
               {
                 icon: TrendingUp,
                 title: 'Branding & Identidade',
                 description:
                   'Construímos marcas fortes e memoráveis. Desenvolvemos identidades visuais completas que comunicam os valores e a essência do seu negócio.',
-                features: ['Logo & Identidade Visual', 'Manual de Marca', 'Material Gráfico', 'Rebranding'],
+                features: [
+                  'Logo & Identidade Visual',
+                  'Manual de Marca',
+                  'Material Gráfico',
+                  'Rebranding',
+                ],
               },
               {
                 icon: Megaphone,
@@ -379,7 +404,10 @@ export const Home: React.FC = () => {
       </Section>
 
       {/* Portfolio Section */}
-      <Section id="portfolio" className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10">
+      <Section
+        id="portfolio"
+        className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10"
+      >
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -444,7 +472,10 @@ export const Home: React.FC = () => {
       </Section>
 
       {/* Contact Section */}
-      <Section id="contact" className="py-32 bg-dark/40 backdrop-blur-md border-y border-primary-500/10">
+      <Section
+        id="contact"
+        className="py-32 bg-dark/40 backdrop-blur-md border-y border-primary-500/10"
+      >
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
