@@ -18,6 +18,7 @@ import {
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import emailjs from '@emailjs/browser';
+import { useLocation } from 'react-router-dom';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -381,9 +382,7 @@ export const Home: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
               {t('services.title')}
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              {t('services.subtitle')}
-            </p>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">{t('services.subtitle')}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
