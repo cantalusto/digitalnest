@@ -53,22 +53,46 @@
   },
   "services": {
     "title": "Nossos Serviços",
-    "subtitle": "Soluções completas para sua presença digital",
+    "subtitle": "Soluções completas para transformar sua presença digital",
     "webDev": {
       "title": "Desenvolvimento Web",
-      "description": "Sites e aplicações web modernas, responsivas e performáticas."
+      "description": "Criamos sites e aplicações web modernas, responsivas e otimizadas para performance. Utilizamos as tecnologias mais recentes para garantir a melhor experiência do usuário.",
+      "features": [
+        "React & Next.js",
+        "Progressive Web Apps",
+        "E-commerce",
+        "APIs & Integrações"
+      ]
     },
     "design": {
       "title": "Design UI/UX",
-      "description": "Interfaces intuitivas e experiências de usuário memoráveis."
+      "description": "Design focado na experiência do usuário, com interfaces intuitivas e atraentes. Criamos identidades visuais que conectam sua marca ao público.",
+      "features": [
+        "Design Responsivo",
+        "Prototipagem",
+        "Design Systems",
+        "Testes de Usabilidade"
+      ]
     },
     "branding": {
-      "title": "Branding Digital",
-      "description": "Construção e fortalecimento da identidade da sua marca."
+      "title": "Branding & Identidade",
+      "description": "Construímos marcas fortes e memoráveis. Desenvolvemos identidades visuais completas que comunicam os valores e a essência do seu negócio.",
+      "features": [
+        "Logo & Identidade Visual",
+        "Manual de Marca",
+        "Material Gráfico",
+        "Rebranding"
+      ]
     },
     "marketing": {
       "title": "Marketing Digital",
-      "description": "Estratégias eficazes para aumentar sua presença online."
+      "description": "Estratégias de marketing digital para aumentar sua visibilidade online e gerar resultados mensuráveis. Do planejamento à execução.",
+      "features": [
+        "SEO & SEM",
+        "Social Media",
+        "Content Marketing",
+        "Analytics & Reports"
+      ]
     },
     "learnMore": "Saiba mais"
   },
@@ -119,5 +143,9 @@
   "theme": {
     "light": "Modo Claro",
     "dark": "Modo Escuro"
+  },
+  "notFound": {
+    "title": "Erro 404",
+    "subtitle": "Página não encontrada"
   }
 }

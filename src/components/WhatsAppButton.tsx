@@ -7,9 +7,9 @@ interface WhatsAppButtonProps {
   message?: string;
 }
 
-export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ 
-  phoneNumber, 
-  message = 'Olá! Gostaria de saber mais sobre os serviços da DigitalNest.' 
+export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
+  phoneNumber,
+  message = 'Olá! Gostaria de saber mais sobre os serviços da DigitalNest.',
 }) => {
   const handleClick = () => {
     const encodedMessage = encodeURIComponent(message);
@@ -22,13 +22,13 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       onClick={handleClick}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ 
+      transition={{
         delay: 1,
         type: 'spring',
         stiffness: 260,
-        damping: 20 
+        damping: 20,
       }}
-      whileHover={{ 
+      whileHover={{
         scale: 1.1,
         rotate: 5,
       }}
@@ -38,7 +38,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     >
       {/* Glow effect */}
       <div className="absolute inset-0 bg-green-500 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-      
+
       {/* Button */}
       <div className="relative w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl shadow-green-500/50 flex items-center justify-center transition-colors">
         <MessageCircle className="w-8 h-8 text-white" fill="white" />
@@ -48,14 +48,14 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       <motion.div
         className="absolute inset-0 rounded-full border-2 border-green-500"
         initial={{ scale: 1, opacity: 0.5 }}
-        animate={{ 
+        animate={{
           scale: [1, 1.3, 1.3, 1],
-          opacity: [0.5, 0, 0, 0.5] 
+          opacity: [0.5, 0, 0, 0.5],
         }}
-        transition={{ 
+        transition={{
           duration: 2,
           repeat: Infinity,
-          ease: 'easeInOut'
+          ease: 'easeInOut',
         }}
       />
 

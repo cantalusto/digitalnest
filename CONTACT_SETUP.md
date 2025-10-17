@@ -25,18 +25,8 @@ O formulário de contato usa **EmailJS** para enviar emails diretamente do front
 3. Use o seguinte template:
 
 ```html
-Olá {{to_name}},
-
-Você recebeu uma nova mensagem de contato do site DigitalNest:
-
-Nome: {{from_name}}
-Email: {{from_email}}
-
-Mensagem:
-{{message}}
-
----
-Enviado via DigitalNest Contact Form
+Olá {{to_name}}, Você recebeu uma nova mensagem de contato do site DigitalNest: Nome: {{from_name}}
+Email: {{from_email}} Mensagem: {{message}} --- Enviado via DigitalNest Contact Form
 ```
 
 4. Copie o **Template ID** gerado
@@ -77,11 +67,13 @@ VITE_WHATSAPP_NUMBER=5511999999999
 ```
 
 **Formato:**
+
 - `55` - Código do Brasil
 - `11` - DDD de São Paulo
 - `999999999` - Número do celular
 
 **Outros países:**
+
 - Portugal: `351912345678`
 - EUA: `1234567890`
 - Argentina: `5491123456789`
@@ -123,6 +115,7 @@ VITE_WHATSAPP_NUMBER=5511999999999
 ## 📝 Modo Demo
 
 Se as variáveis de ambiente não estiverem configuradas, o formulário ainda funciona em modo demo:
+
 - Mostra mensagem de sucesso
 - Limpa o formulário
 - Não envia email real

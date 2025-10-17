@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { AnimatedBackground } from './components/ui/AnimatedBackground';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { Home } from './pages/Home';
+import NotFound from './pages/NotFound';
 
 function App() {
   // Force dark mode
@@ -27,7 +28,7 @@ function App() {
           <main className="flex-grow w-full">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
