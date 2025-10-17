@@ -14,7 +14,7 @@ function App() {
   // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    
+
     // Remove default smooth scroll to allow custom animation
     document.documentElement.style.scrollBehavior = 'auto';
   }, []);
@@ -41,8 +41,8 @@ function App() {
         </div>
 
         {/* WhatsApp Floating Button */}
-        <WhatsAppButton 
-          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || "5511999999999"} 
+        <WhatsAppButton
+          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999'}
           message="Olá! Gostaria de saber mais sobre os serviços da DigitalNest."
         />
       </div>

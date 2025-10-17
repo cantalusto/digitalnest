@@ -83,7 +83,8 @@ export const Navbar: React.FC = () => {
       const element = document.querySelector(path);
       if (element) {
         const navbarHeight = 80; // Height of navbar
-        const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        const targetPosition =
+          element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         const duration = 1200; // 1.2 seconds for smooth scroll
@@ -148,9 +149,9 @@ export const Navbar: React.FC = () => {
             style={{ pointerEvents: scrolled ? 'auto' : 'none' }}
           >
             <Link to="/" className="flex items-center group">
-              <img 
-                src="/DigitalNest - logo.svg" 
-                alt="DigitalNest" 
+              <img
+                src="/DigitalNest - logo.svg"
+                alt="DigitalNest"
                 className="h-10 w-auto drop-shadow-lg"
               />
             </Link>

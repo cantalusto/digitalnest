@@ -20,11 +20,13 @@ Erro 422 indica que o template do EmailJS não está configurado corretamente ou
 ### 3. Configure o Template Corretamente
 
 **Subject (Assunto):**
+
 ```
 Nova mensagem de contato - {{user_name}}
 ```
 
 **Content (HTML ou Text):**
+
 ```html
 <h2>Nova Mensagem de Contato - DigitalNest</h2>
 
@@ -34,19 +36,22 @@ Nova mensagem de contato - {{user_name}}
 <h3>Mensagem:</h3>
 <p>{{message}}</p>
 
-<hr>
+<hr />
 <p style="color: #666; font-size: 12px;">
   Esta mensagem foi enviada através do formulário de contato do site DigitalNest.
 </p>
 ```
 
 **To Email:**
+
 ```
 contato@digitalnest.com
 ```
-*(ou seu email real)*
+
+_(ou seu email real)_
 
 **Reply To:**
+
 ```
 {{reply_to}}
 ```
@@ -78,47 +83,74 @@ Se quiser um template mais elaborado:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #10f080; color: #000; padding: 20px; text-align: center; }
-    .content { background: #f9f9f9; padding: 20px; margin: 20px 0; }
-    .field { margin: 15px 0; }
-    .label { font-weight: bold; color: #555; }
-    .footer { text-align: center; color: #999; font-size: 12px; padding: 20px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>DigitalNest</h1>
-      <p>Nova Mensagem de Contato</p>
-    </div>
-    
-    <div class="content">
-      <div class="field">
-        <span class="label">Nome:</span>
-        <p>{{user_name}}</p>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        background: #10f080;
+        color: #000;
+        padding: 20px;
+        text-align: center;
+      }
+      .content {
+        background: #f9f9f9;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .field {
+        margin: 15px 0;
+      }
+      .label {
+        font-weight: bold;
+        color: #555;
+      }
+      .footer {
+        text-align: center;
+        color: #999;
+        font-size: 12px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>DigitalNest</h1>
+        <p>Nova Mensagem de Contato</p>
       </div>
-      
-      <div class="field">
-        <span class="label">Email:</span>
-        <p>{{user_email}}</p>
+
+      <div class="content">
+        <div class="field">
+          <span class="label">Nome:</span>
+          <p>{{user_name}}</p>
+        </div>
+
+        <div class="field">
+          <span class="label">Email:</span>
+          <p>{{user_email}}</p>
+        </div>
+
+        <div class="field">
+          <span class="label">Mensagem:</span>
+          <p>{{message}}</p>
+        </div>
       </div>
-      
-      <div class="field">
-        <span class="label">Mensagem:</span>
-        <p>{{message}}</p>
+
+      <div class="footer">
+        <p>Esta mensagem foi enviada através do formulário de contato do site DigitalNest</p>
+        <p>Para responder, use o botão "Reply" ou envie para: {{reply_to}}</p>
       </div>
     </div>
-    
-    <div class="footer">
-      <p>Esta mensagem foi enviada através do formulário de contato do site DigitalNest</p>
-      <p>Para responder, use o botão "Reply" ou envie para: {{reply_to}}</p>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
 ```
 
