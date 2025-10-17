@@ -119,5 +119,9 @@
   "theme": {
     "light": "Modo Claro",
     "dark": "Modo Escuro"
+  },
+  "notFound": {
+    "title": "Erro 404",
+    "subtitle": "Página não encontrada"
   }
 }

@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { AnimatedBackground } from './components/ui/AnimatedBackground';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { Home } from './pages/Home';
+import NotFound from './pages/NotFound';
 
 function App() {
   // Force dark mode
@@ -27,14 +28,15 @@ function App() {
           <main className="flex-grow w-full">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
         </div>
 
         {/* WhatsApp Floating Button */}
-        <WhatsAppButton 
-          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || "5511999999999"} 
+        <WhatsAppButton
+          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999'}
           message="Olá! Gostaria de saber mais sobre os serviços da DigitalNest."
         />
       </div>
