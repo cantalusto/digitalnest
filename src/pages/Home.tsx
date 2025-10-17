@@ -334,10 +334,10 @@ export const Home: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-              Nossos Serviços
+              {t('services.title')}
             </h2>
             <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Soluções completas para transformar sua presença digital
+              {t('services.subtitle')}
             </p>
           </motion.div>
 
@@ -345,46 +345,27 @@ export const Home: React.FC = () => {
             {[
               {
                 icon: Code,
-                title: 'Desenvolvimento Web',
-                description:
-                  'Criamos sites e aplicações web modernas, responsivas e otimizadas para performance. Utilizamos as tecnologias mais recentes para garantir a melhor experiência do usuário.',
-                features: [
-                  'React & Next.js',
-                  'Progressive Web Apps',
-                  'E-commerce',
-                  'APIs & Integrações',
-                ],
+                title: t('services.webDev.title'),
+                description: t('services.webDev.description'),
+                features: t('services.webDev.features', { returnObjects: true }) as string[],
               },
               {
                 icon: Palette,
-                title: 'Design UI/UX',
-                description:
-                  'Design focado na experiência do usuário, com interfaces intuitivas e atraentes. Criamos identidades visuais que conectam sua marca ao público.',
-                features: [
-                  'Design Responsivo',
-                  'Prototipagem',
-                  'Design Systems',
-                  'Testes de Usabilidade',
-                ],
+                title: t('services.design.title'),
+                description: t('services.design.description'),
+                features: t('services.design.features', { returnObjects: true }) as string[],
               },
               {
                 icon: TrendingUp,
-                title: 'Branding & Identidade',
-                description:
-                  'Construímos marcas fortes e memoráveis. Desenvolvemos identidades visuais completas que comunicam os valores e a essência do seu negócio.',
-                features: [
-                  'Logo & Identidade Visual',
-                  'Manual de Marca',
-                  'Material Gráfico',
-                  'Rebranding',
-                ],
+                title: t('services.branding.title'),
+                description: t('services.branding.description'),
+                features: t('services.branding.features', { returnObjects: true }) as string[],
               },
               {
                 icon: Megaphone,
-                title: 'Marketing Digital',
-                description:
-                  'Estratégias de marketing digital para aumentar sua visibilidade online e gerar resultados mensuráveis. Do planejamento à execução.',
-                features: ['SEO & SEM', 'Social Media', 'Content Marketing', 'Analytics & Reports'],
+                title: t('services.marketing.title'),
+                description: t('services.marketing.description'),
+                features: t('services.marketing.features', { returnObjects: true }) as string[],
               },
             ].map((service, index) => (
               <motion.div
