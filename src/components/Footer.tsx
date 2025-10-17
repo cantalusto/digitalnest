@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
-import { scrollTo } from '../utils/scroll';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -23,6 +22,15 @@ export const Footer: React.FC = () => {
     { path: 'contact', label: t('navbar.contact') },
   ];
 
+  function scrollTo(sectionId: string) {
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  }
   return (
     <footer className="bg-gray-900 text-gray-300">
       <Container>
