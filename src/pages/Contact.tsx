@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Send, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Send, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import { Input } from '../components/ui/Input';
