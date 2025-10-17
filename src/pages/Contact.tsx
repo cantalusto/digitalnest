@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Send, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Send, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import { Input } from '../components/ui/Input';
@@ -85,7 +85,6 @@ export const Contact: React.FC = () => {
 
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook', color: 'hover:text-blue-600' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:text-sky-500' },
     { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:text-pink-600' },
     { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:text-blue-700' },
   ];
@@ -198,7 +197,7 @@ export const Contact: React.FC = () => {
                     <h3 className="font-heading font-semibold text-gray-900 dark:text-white">
                       Email
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">contato@digitalnest.com.br</p>
+                    <p className="text-gray-600 dark:text-gray-300">contato@digitalnest.app.br</p>
                   </div>
                 </div>
               </div>

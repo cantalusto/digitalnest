@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, Github, Heart } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
+import { scrollTo } from '@/utils/scroll';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -10,18 +10,17 @@ export const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Instagram, href: '#', label: 'Instagram' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Github, href: '#', label: 'GitHub' },
   ];
 
   const navLinks = [
-    { path: '/', label: t('navbar.home') },
-    { path: '/about', label: t('navbar.about') },
-    { path: '/services', label: t('navbar.services') },
-    { path: '/portfolio', label: t('navbar.portfolio') },
-    { path: '/contact', label: t('navbar.contact') },
+    { path: 'home', label: t('navbar.home') },
+    { path: 'about', label: t('navbar.about') },
+    { path: 'services', label: t('navbar.services') },
+    { path: 'portfolio', label: t('navbar.portfolio') },
+    { path: 'contact', label: t('navbar.contact') },
   ];
 
   return (
@@ -57,12 +56,12 @@ export const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      to={link.path}
+                    <button
+                      onClick={() => scrollTo(link.path)}
                       className="text-gray-400 hover:text-primary transition-colors"
                     >
                       {link.label}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -75,7 +74,6 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-2 text-gray-400">
                 <li>Email: contato@digitalnest.app.br</li>
-                <li>Tel: +55 (11) 9999-9999</li>
                 <li>Recife, PE - Brasil</li>
               </ul>
             </div>
