@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -22,7 +21,6 @@ import emailjs from '@emailjs/browser';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -180,7 +178,37 @@ export const Home: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/contact')}
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    const navbarHeight = 80;
+                    const targetPosition =
+                      element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1200;
+                    let start: number | null = null;
+
+                    const easeInOutCubic = (t: number): number => {
+                      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+                    };
+
+                    const animation = (currentTime: number) => {
+                      if (start === null) start = currentTime;
+                      const timeElapsed = currentTime - start;
+                      const progress = Math.min(timeElapsed / duration, 1);
+                      const ease = easeInOutCubic(progress);
+
+                      window.scrollTo(0, startPosition + distance * ease);
+
+                      if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                      }
+                    };
+
+                    requestAnimationFrame(animation);
+                  }
+                }}
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-dark font-semibold shadow-xl shadow-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/50 transition-all flex items-center gap-2"
               >
                 {t('home.cta')}
