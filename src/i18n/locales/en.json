@@ -102,20 +102,20 @@
     "viewMore": "View more",
     "projects": {
       "ecommerce": {
-        "title": "Modern E-commerce",
-        "description": "Complete online sales platform"
+        "title": "E-commerce Platform",
+        "description": "Complete online sales platform with administrative dashboard"
       },
       "corporate": {
         "title": "Corporate Website",
-        "description": "Professional digital presence"
+        "description": "Modern and responsive institutional website for multinational company"
       },
       "app": {
         "title": "Mobile App",
-        "description": "Native mobile experience"
+        "description": "Mobile application with intuitive and performant interface"
       },
       "dashboard": {
-        "title": "Analytics Dashboard",
-        "description": "Real-time data visualization"
+        "title": "Dashboard Analytics",
+        "description": "Analytics panel with real-time data visualization"
       }
     }
   },

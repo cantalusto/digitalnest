@@ -40,6 +40,17 @@ export const Navbar: React.FC = () => {
 
       // Detect active section (immediate, no debounce)
       const sections = ['home', 'stats', 'about', 'why-us', 'services', 'portfolio', 'contact'];
+      
+      // Map sections to navbar items (stats -> home, why-us -> about)
+      const sectionToNavItem: { [key: string]: string } = {
+        'home': '#home',
+        'stats': '#home',
+        'about': '#about',
+        'why-us': '#about',
+        'services': '#services',
+        'portfolio': '#portfolio',
+        'contact': '#contact',
+      };
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -49,7 +60,7 @@ export const Navbar: React.FC = () => {
           const sectionBottom = offsetTop + offsetHeight - 100;
 
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            setActiveSection(`#${section}`);
+            setActiveSection(sectionToNavItem[section] || `#${section}`);
             break;
           }
         }
@@ -230,27 +241,43 @@ export const Navbar: React.FC = () => {
                   )}
                 </motion.a>
               ) : (
-                <Link key={item.path} to={item.path} className="relative px-4 py-2 group">
-                  <motion.span
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`text-sm font-medium transition-colors ${
-                      isActive(item.path)
-                        ? 'text-primary-500'
-                        : 'text-white group-hover:text-primary-400'
-                    }`}
-                  >
-                    {item.label}
-                  </motion.span>
-                  {isActive(item.path) && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
+                <motion.div
+                  key={item.path}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link to={item.path} className="relative px-4 py-2 group block">
+                    <motion.span
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: index * 0.1,
+                        duration: 0.3,
+                        ease: 'easeOut',
+                      }}
+                      className={`text-sm font-medium transition-all duration-300 ${
+                        isActive(item.path)
+                          ? 'text-primary-500'
+                          : 'text-white group-hover:text-primary-400'
+                      }`}
+                    >
+                      {item.label}
+                    </motion.span>
+                    {isActive(item.path) && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500 shadow-lg shadow-primary-500/50"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 500,
+                          damping: 35,
+                          mass: 0.8,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               )
             )}
           </div>
