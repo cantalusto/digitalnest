@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
-import { scrollTo } from '@/utils/scroll';
+import { scrollTo } from '../utils/scroll';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();

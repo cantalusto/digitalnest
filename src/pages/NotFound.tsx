@@ -1,5 +1,5 @@
-import { Heading } from '@/components/ui/Heading';
-import { Section } from '@/components/ui/Section';
+import { Heading } from '../components/ui/Heading';
+import { Section } from '../components/ui/Section';
 import { useTranslation } from 'react-i18next';
 
 export default function NotFound() {
