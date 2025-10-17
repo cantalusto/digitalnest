@@ -446,23 +446,23 @@ export const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: 'E-commerce Platform',
-                description: 'Plataforma completa de vendas online com dashboard administrativo',
+                title: t('portfolio.projects.ecommerce.title'),
+                description: t('portfolio.projects.ecommerce.description'),
                 image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800',
               },
               {
-                title: 'Corporate Website',
-                description: 'Site institucional moderno e responsivo para empresa multinacional',
+                title: t('portfolio.projects.corporate.title'),
+                description: t('portfolio.projects.corporate.description'),
                 image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
               },
               {
-                title: 'Mobile App',
-                description: 'Aplicativo mobile com interface intuitiva e performática',
+                title: t('portfolio.projects.app.title'),
+                description: t('portfolio.projects.app.description'),
                 image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800',
               },
               {
-                title: 'Dashboard Analytics',
-                description: 'Painel de analytics com visualização de dados em tempo real',
+                title: t('portfolio.projects.dashboard.title'),
+                description: t('portfolio.projects.dashboard.description'),
                 image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
               },
             ].map((project, index) => (
