@@ -149,10 +149,12 @@ export const Navbar: React.FC = () => {
             }}
             style={{ pointerEvents: scrolled ? 'auto' : 'none' }}
           >
-            <Link to="/" className="flex items-center space-x-3 group">
-              <span className="text-2xl font-display font-bold text-white drop-shadow-lg">
-                DigitalNest
-              </span>
+            <Link to="/" className="flex items-center group">
+              <img 
+                src="/DigitalNest - logo.svg" 
+                alt="DigitalNest" 
+                className="h-10 w-auto drop-shadow-lg"
+              />
             </Link>
           </motion.div>
 

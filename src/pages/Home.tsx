@@ -58,18 +58,24 @@ export const Home: React.FC = () => {
         return;
       }
 
-      await emailjs.send(
+      // Template parameters - adjust these names to match your EmailJS template
+      const templateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        message: formData.message,
+        to_email: 'contato@digitalnest.app.br', // Your company email
+        reply_to: formData.email,
+      };
+
+      console.log('Sending email with params:', {
         serviceId,
         templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'DigitalNest Team',
-        },
-        publicKey
-      );
+        publicKey: publicKey.substring(0, 5) + '...',
+      });
 
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      console.log('Email sent successfully!');
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
@@ -126,14 +132,22 @@ export const Home: React.FC = () => {
 
         <Container className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Main Title - DigitalNest */}
+            {/* Main Title - Logo */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="w-80 mx-auto"
+              className="flex justify-center mb-6"
             >
-              <img src={Logo} alt="" />
+              <img
+                src="/DigitalNest - logo.svg"
+                alt="DigitalNest"
+                className="h-32 md:h-40 lg:h-48 w-auto drop-shadow-2xl"
+                style={{
+                  filter:
+                    'drop-shadow(0 0 30px rgba(16, 240, 128, 0.5)) drop-shadow(0 2px 10px rgba(0,0,0,0.8))',
+                }}
+              />
             </motion.div>
 
             {/* Subtitle */}
