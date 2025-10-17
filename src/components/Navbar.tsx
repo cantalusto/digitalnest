@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageToggle } from './LanguageToggle';
 import { Container } from './ui/Container';
-import { scrollTo } from '../utils/scroll';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +12,17 @@ export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('#home');
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(sectionId);
+    if (!element) return;
+
+    const navbarHeight = 80;
+    const top = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
@@ -74,6 +84,49 @@ export const Navbar: React.FC = () => {
     return location.pathname === path;
   };
 
+  // const handleNavClick = (
+  //   e: React.MouseEvent<HTMLAnchorElement>,
+  //   path: string,
+  //   isAnchor: boolean
+  // ) => {
+  //   if (isAnchor) {
+  //     e.preventDefault();
+  //     const element = document.querySelector(path);
+  //     if (element) {
+  //       const navbarHeight = 80; // Height of navbar
+  //       const targetPosition =
+  //         element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+  //       const startPosition = window.pageYOffset;
+  //       const distance = targetPosition - startPosition;
+  //       const duration = 1200; // 1.2 seconds for smooth scroll
+  //       let start: number | null = null;
+
+  //       // Easing function for smooth animation (ease-in-out-cubic)
+  //       const easeInOutCubic = (t: number): number => {
+  //         return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  //       };
+
+  //       const animation = (currentTime: number) => {
+  //         if (start === null) start = currentTime;
+  //         const timeElapsed = currentTime - start;
+  //         const progress = Math.min(timeElapsed / duration, 1);
+  //         const ease = easeInOutCubic(progress);
+
+  //         window.scrollTo(0, startPosition + distance * ease);
+
+  //         if (timeElapsed < duration) {
+  //           requestAnimationFrame(animation);
+  //         } else {
+  //           window.history.pushState(null, '', path);
+  //         }
+  //       };
+
+  //       requestAnimationFrame(animation);
+  //     }
+  //   }
+  //   setIsOpen(false);
+  // };
+
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     path: string,
@@ -81,42 +134,18 @@ export const Navbar: React.FC = () => {
   ) => {
     if (isAnchor) {
       e.preventDefault();
-      const element = document.querySelector(path);
-      if (element) {
-        const navbarHeight = 80; // Height of navbar
-        const targetPosition =
-          element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        const duration = 1200; // 1.2 seconds for smooth scroll
-        let start: number | null = null;
 
-        // Easing function for smooth animation (ease-in-out-cubic)
-        const easeInOutCubic = (t: number): number => {
-          return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-        };
-
-        const animation = (currentTime: number) => {
-          if (start === null) start = currentTime;
-          const timeElapsed = currentTime - start;
-          const progress = Math.min(timeElapsed / duration, 1);
-          const ease = easeInOutCubic(progress);
-
-          window.scrollTo(0, startPosition + distance * ease);
-
-          if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-          } else {
-            window.history.pushState(null, '', path);
-          }
-        };
-
-        requestAnimationFrame(animation);
+      if (location.pathname !== '/') {
+        // Se não estiver na landing, navega para '/' com query param
+        navigate(`/?scrollTo=${encodeURIComponent(path)}`);
+      } else {
+        // Se já estiver na landing, faz scroll normalmente
+        scrollToSection(path);
       }
     }
+
     setIsOpen(false);
   };
-
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -150,9 +179,9 @@ export const Navbar: React.FC = () => {
             style={{ pointerEvents: scrolled ? 'auto' : 'none' }}
           >
             <Link to="/" className="flex items-center group">
-              <img 
-                src="/DigitalNest - logo.svg" 
-                alt="DigitalNest" 
+              <img
+                src="/DigitalNest - logo.svg"
+                alt="DigitalNest"
                 className="h-10 w-auto drop-shadow-lg"
               />
             </Link>
@@ -234,18 +263,6 @@ export const Navbar: React.FC = () => {
               transition={{ delay: 0.6, duration: 0.3 }}
             >
               <LanguageToggle />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              <button
-                onClick={() => scrollTo('contact')}
-                className="ml-2 px-6 py-2.5 rounded-full bg-primary-500 text-dark text-sm font-medium shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/50 transition-all"
-              >
-                {t('navbar.contact')}
-              </button>
             </motion.div>
           </div>
 

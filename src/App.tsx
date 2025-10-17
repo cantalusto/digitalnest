@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AnimatedBackground } from './components/ui/AnimatedBackground';
@@ -27,14 +27,15 @@ function App() {
           <main className="flex-grow w-full">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />
         </div>
 
         {/* WhatsApp Floating Button */}
-        <WhatsAppButton 
-          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || "5511999999999"} 
+        <WhatsAppButton
+          phoneNumber={import.meta.env.VITE_WHATSAPP_NUMBER || '5511999999999'}
           message="Olá! Gostaria de saber mais sobre os serviços da DigitalNest."
         />
       </div>
