@@ -19,7 +19,6 @@ import {
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import emailjs from '@emailjs/browser';
-import Logo from '@/assets/logo.svg';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
