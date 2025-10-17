@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
@@ -28,6 +28,23 @@ export const Home: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const section = params.get('scrollTo');
+    if (section) {
+      const decodedSection = decodeURIComponent(section);
+      const element = document.querySelector(decodedSection);
+      if (element) {
+        const navbarHeight = 80;
+        const top = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, [location.search]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
