@@ -90,10 +90,10 @@ export const Home: React.FC = () => {
   };
 
   const stats = [
-    { icon: Users, value: '500+', label: t('home.stats.clients') },
-    { icon: Award, value: '95%', label: t('home.stats.satisfaction') },
-    { icon: Globe, value: '30+', label: t('home.stats.countries') },
-    { icon: TrendingUp, value: '2x', label: t('home.stats.roi') },
+    { icon: Users, value: '10+', label: t('home.stats.clients') },
+    { icon: Award, value: '96%', label: t('home.stats.satisfaction') },
+    { icon: Globe, value: '3+', label: t('home.stats.countries') },
+    { icon: TrendingUp, value: '15+', label: t('home.stats.projects') },
   ];
 
   const features = [
@@ -292,11 +292,7 @@ export const Home: React.FC = () => {
             className="text-center"
           >
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              Somos uma equipe apaixonada por tecnologia e design, comprometida em entregar soluções
-              digitais de excelência. Com anos de experiência no mercado, já ajudamos dezenas de
-              empresas a alcançarem seus objetivos através de estratégias digitais eficazes e
-              inovadoras. Nossa abordagem combina criatividade, técnica e foco em resultados
-              mensuráveis para garantir o sucesso dos nossos clientes.
+              {t('about.description')}
             </p>
           </motion.div>
         </Container>

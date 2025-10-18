@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Brand */}
             <div>
-              <h3 className="text-2xl font-heading font-bold text-primary mb-4">DigitalNest</h3>
+              <h3 className="text-2xl font-brand font-bold text-primary mb-4">DigitalNest</h3>
               <p className="text-gray-400 mb-4">{t('home.subtitle')}</p>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
@@ -81,11 +81,11 @@ export const Footer: React.FC = () => {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-gray-400 flex items-center justify-center gap-2">
-              © {currentYear} DigitalNest. {t('footer.rights')}
+              © {currentYear} <span className="font-brand">DigitalNest</span>. {t('footer.rights')}
             </p>
             <p className="text-gray-500 text-sm mt-2 flex items-center justify-center gap-1">
               {t('footer.madeWith')} <Heart size={14} className="text-red-500 fill-current" />{' '}
-              {t('footer.by')} DigitalNest Team
+              {t('footer.by')} <span className="font-brand">DigitalNest</span> Team
             </p>
           </div>
         </div>
