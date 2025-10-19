@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -22,7 +21,6 @@ import emailjs from '@emailjs/browser';
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -109,10 +107,10 @@ export const Home: React.FC = () => {
   };
 
   const stats = [
-    { icon: Users, value: '500+', label: t('home.stats.clients') },
-    { icon: Award, value: '95%', label: t('home.stats.satisfaction') },
-    { icon: Globe, value: '30+', label: t('home.stats.countries') },
-    { icon: TrendingUp, value: '2x', label: t('home.stats.roi') },
+    { icon: Users, value: '10+', label: t('home.stats.clients') },
+    { icon: Award, value: '96%', label: t('home.stats.satisfaction') },
+    { icon: Globe, value: '3+', label: t('home.stats.countries') },
+    { icon: TrendingUp, value: '15+', label: t('home.stats.projects') },
   ];
 
   const features = [
@@ -197,7 +195,37 @@ export const Home: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/contact')}
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    const navbarHeight = 80;
+                    const targetPosition =
+                      element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1200;
+                    let start: number | null = null;
+
+                    const easeInOutCubic = (t: number): number => {
+                      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+                    };
+
+                    const animation = (currentTime: number) => {
+                      if (start === null) start = currentTime;
+                      const timeElapsed = currentTime - start;
+                      const progress = Math.min(timeElapsed / duration, 1);
+                      const ease = easeInOutCubic(progress);
+
+                      window.scrollTo(0, startPosition + distance * ease);
+
+                      if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                      }
+                    };
+
+                    requestAnimationFrame(animation);
+                  }
+                }}
                 className="group px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-dark font-semibold shadow-xl shadow-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/50 transition-all flex items-center gap-2"
               >
                 {t('home.cta')}
@@ -281,11 +309,7 @@ export const Home: React.FC = () => {
             className="text-center"
           >
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              Somos uma equipe apaixonada por tecnologia e design, comprometida em entregar soluções
-              digitais de excelência. Com anos de experiência no mercado, já ajudamos dezenas de
-              empresas a alcançarem seus objetivos através de estratégias digitais eficazes e
-              inovadoras. Nossa abordagem combina criatividade, técnica e foco em resultados
-              mensuráveis para garantir o sucesso dos nossos clientes.
+              {t('about.description')}
             </p>
           </motion.div>
         </Container>
@@ -435,23 +459,23 @@ export const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: 'E-commerce Platform',
-                description: 'Plataforma completa de vendas online com dashboard administrativo',
+                title: t('portfolio.projects.ecommerce.title'),
+                description: t('portfolio.projects.ecommerce.description'),
                 image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800',
               },
               {
-                title: 'Corporate Website',
-                description: 'Site institucional moderno e responsivo para empresa multinacional',
+                title: t('portfolio.projects.corporate.title'),
+                description: t('portfolio.projects.corporate.description'),
                 image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
               },
               {
-                title: 'Mobile App',
-                description: 'Aplicativo mobile com interface intuitiva e performática',
+                title: t('portfolio.projects.app.title'),
+                description: t('portfolio.projects.app.description'),
                 image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800',
               },
               {
-                title: 'Dashboard Analytics',
-                description: 'Painel de analytics com visualização de dados em tempo real',
+                title: t('portfolio.projects.dashboard.title'),
+                description: t('portfolio.projects.dashboard.description'),
                 image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
               },
             ].map((project, index) => (

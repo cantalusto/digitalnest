@@ -16,7 +16,7 @@
       "clients": "Clients",
       "satisfaction": "Satisfaction",
       "countries": "Countries",
-      "roi": "Average ROI"
+      "projects": "Delivered Projects"
     },
     "features": {
       "innovative": {
@@ -43,6 +43,7 @@
   "about": {
     "title": "About Us",
     "subtitle": "We are a digital agency focused on innovation and results",
+    "description": "We are a team passionate about technology and design, committed to delivering excellent digital solutions. We combine creativity, technique and focus on measurable results to ensure the success of our clients through effective and innovative digital strategies.",
     "mission": "Mission",
     "missionText": "Create digital solutions that drive growth and transformation for our clients.",
     "vision": "Vision",
@@ -102,20 +103,20 @@
     "viewMore": "View more",
     "projects": {
       "ecommerce": {
-        "title": "Modern E-commerce",
-        "description": "Complete online sales platform"
+        "title": "E-commerce Platform",
+        "description": "Complete online sales platform with administrative dashboard"
       },
       "corporate": {
         "title": "Corporate Website",
-        "description": "Professional digital presence"
+        "description": "Modern and responsive institutional website for multinational company"
       },
       "app": {
         "title": "Mobile App",
-        "description": "Native mobile experience"
+        "description": "Mobile application with intuitive and performant interface"
       },
       "dashboard": {
-        "title": "Analytics Dashboard",
-        "description": "Real-time data visualization"
+        "title": "Dashboard Analytics",
+        "description": "Analytics panel with real-time data visualization"
       }
     }
   },

@@ -62,6 +62,7 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        brand: ['Baumans', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
