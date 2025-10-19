@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
+import { Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
 
 export const Footer: React.FC = () => {
