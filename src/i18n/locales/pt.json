@@ -16,7 +16,7 @@
       "clients": "Clientes",
       "satisfaction": "Satisfação",
       "countries": "Países",
-      "roi": "ROI Médio"
+      "projects": "Projetos Entregues"
     },
     "features": {
       "innovative": {
@@ -43,6 +43,7 @@
   "about": {
     "title": "Sobre Nós",
     "subtitle": "Somos uma agência digital focada em inovação e resultados",
+    "description": "Somos uma equipe apaixonada por tecnologia e design, comprometida em entregar soluções digitais de excelência. Combinamos criatividade, técnica e foco em resultados mensuráveis para garantir o sucesso dos nossos clientes através de estratégias digitais eficazes e inovadoras.",
     "mission": "Missão",
     "missionText": "Criar soluções digitais que impulsionam o crescimento e a transformação dos nossos clientes.",
     "vision": "Visão",
