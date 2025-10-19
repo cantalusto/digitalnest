@@ -8,10 +8,10 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
+    // { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/dgtlnest/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/digitalnest10/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Digitalnest10', label: 'GitHub' },
   ];
 
   const navLinks = [
@@ -23,12 +23,26 @@ export const Footer: React.FC = () => {
   ];
 
   function scrollTo(sectionId: string) {
-    const section = document.getElementById(sectionId);
+    const location = window.location.pathname;
+    const navigate = (path: string) => {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    };
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-      });
+    if (location !== '/') {
+      navigate(`/#${sectionId}`);
+
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
   return (
