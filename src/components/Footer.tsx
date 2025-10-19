@@ -1,18 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
+import { Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
-import { scrollTo } from '../utils/scroll';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
+    // { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/dgtlnest/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/digitalnest10/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Digitalnest10', label: 'GitHub' },
   ];
 
   const navLinks = [
@@ -23,6 +22,29 @@ export const Footer: React.FC = () => {
     { path: 'contact', label: t('navbar.contact') },
   ];
 
+  function scrollTo(sectionId: string) {
+    const location = window.location.pathname;
+    const navigate = (path: string) => {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    };
+
+    if (location !== '/') {
+      navigate(`/#${sectionId}`);
+
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
   return (
     <footer className="bg-gray-900 text-gray-300">
       <Container>
