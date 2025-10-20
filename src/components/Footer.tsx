@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Instagram, Linkedin, Github, Heart } from 'lucide-react';
+import { Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Container } from './ui/Container';
 import { scrollTo } from '../utils/scroll';
 
@@ -9,10 +9,9 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Instagram, href: 'https://www.instagram.com/dgtlnest/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/digitalnest10/about/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/Digitalnest10', label: 'GitHub' },
   ];
 
   const navLinks = [
