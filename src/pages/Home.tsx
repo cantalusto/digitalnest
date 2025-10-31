@@ -17,7 +17,17 @@ import {
 } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
+import { ServiceModal } from '../components/ServiceModal';
 import emailjs from '@emailjs/browser';
+
+interface ServiceDetail {
+  id: string;
+  title: string;
+  description: string;
+  importance: string;
+  benefits: string[];
+  examples: string[];
+}
 
 export const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -28,6 +38,8 @@ export const Home: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -114,6 +126,69 @@ export const Home: React.FC = () => {
       title: t('home.features.results.title'),
       description: t('home.features.results.description'),
       gradient: 'from-secondary-500 to-primary-500',
+    },
+  ];
+
+  const servicesDetails = [
+    {
+      id: 'web-dev',
+      title: t('services.webDev.title'),
+      description: t('services.webDev.description'),
+      importance:
+        'Um site moderno e performático é a vitrine digital do seu negócio. Ele determina a primeira impressão que os clientes têm da sua marca e influencia diretamente nas conversões. Sites lentos ou desatualizados fazem você perder clientes para a concorrência.',
+      benefits: [
+        'Aumento de até 200% nas conversões com design otimizado',
+        'Melhor posicionamento no Google (SEO)',
+        'Experiência mobile perfeita para seus clientes',
+        'Redução de custos operacionais com automação',
+        'Escalabilidade para crescer junto com seu negócio',
+      ],
+      examples: ['Netflix', 'Spotify', 'Airbnb', 'Uber', 'Amazon', 'Nubank'],
+    },
+    {
+      id: 'design',
+      title: t('services.design.title'),
+      description: t('services.design.description'),
+      importance:
+        'Design não é apenas estética - é sobre criar experiências que convertem visitantes em clientes. 94% da primeira impressão está relacionada ao design. Um design profissional aumenta a credibilidade e confiança na sua marca.',
+      benefits: [
+        'Aumento de 400% na confiança do cliente',
+        'Redução de 50% na taxa de rejeição',
+        'Interface intuitiva que reduz suporte',
+        'Identidade visual consistente e memorável',
+        'Diferenciação clara da concorrência',
+      ],
+      examples: ['Apple', 'Spotify', 'Airbnb', 'Uber', 'Dropbox', 'Slack'],
+    },
+    {
+      id: 'branding',
+      title: t('services.branding.title'),
+      description: t('services.branding.description'),
+      importance:
+        'Branding forte pode aumentar o valor da empresa em até 20%. Marcas consistentes são 3x mais memoráveis e geram mais confiança. Investir em branding é investir no valor percebido do seu negócio.',
+      benefits: [
+        'Reconhecimento instantâneo da marca',
+        'Lealdade e conexão emocional com clientes',
+        'Capacidade de cobrar preços premium',
+        'Diferenciação clara no mercado',
+        'Aumento no valor percebido dos produtos/serviços',
+      ],
+      examples: ['Coca-Cola', 'Nike', 'Apple', 'Google', 'McDonald\'s', 'Starbucks'],
+    },
+    {
+      id: 'marketing',
+      title: t('services.marketing.title'),
+      description: t('services.marketing.description'),
+      importance:
+        'Marketing digital gera 3x mais leads que marketing tradicional e custa 62% menos. Empresas que investem em marketing digital crescem 2.8x mais rápido. É a forma mais eficiente de alcançar seu público-alvo.',
+      benefits: [
+        'ROI mensurável e otimizável em tempo real',
+        'Alcance global com investimento controlado',
+        'Segmentação precisa do público-alvo',
+        'Geração constante de leads qualificados',
+        'Construção de autoridade no mercado',
+      ],
+      examples: ['Red Bull', 'Nike', 'Amazon', 'HubSpot', 'Netflix', 'Tesla'],
     },
   ];
 
@@ -372,42 +447,55 @@ export const Home: React.FC = () => {
                 title: t('services.webDev.title'),
                 description: t('services.webDev.description'),
                 features: t('services.webDev.features', { returnObjects: true }) as string[],
+                detailsId: 'web-dev',
               },
               {
                 icon: Palette,
                 title: t('services.design.title'),
                 description: t('services.design.description'),
                 features: t('services.design.features', { returnObjects: true }) as string[],
+                detailsId: 'design',
               },
               {
                 icon: TrendingUp,
                 title: t('services.branding.title'),
                 description: t('services.branding.description'),
                 features: t('services.branding.features', { returnObjects: true }) as string[],
+                detailsId: 'branding',
               },
               {
                 icon: Megaphone,
                 title: t('services.marketing.title'),
                 description: t('services.marketing.description'),
                 features: t('services.marketing.features', { returnObjects: true }) as string[],
+                detailsId: 'marketing',
               },
             ].map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scaleY: 1.05 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-8 rounded-3xl bg-dark/60 backdrop-blur-md border border-primary-500/20 hover:border-primary-500/40 transition-all"
+                onClick={() => {
+                  const details = servicesDetails.find((d) => d.id === service.detailsId);
+                  if (details) {
+                    setSelectedService(details);
+                    setIsModalOpen(true);
+                  }
+                }}
+                style={{ transformOrigin: 'top' }}
+                className="group p-6 rounded-3xl bg-dark/60 backdrop-blur-md border border-primary-500/20 hover:border-primary-500/40 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-300 cursor-pointer"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 mb-6 shadow-lg shadow-primary-500/30">
-                  <service.icon className="w-8 h-8 text-dark" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 mb-4 shadow-lg shadow-primary-500/30">
+                  <service.icon className="w-7 h-7 text-dark" />
                 </div>
 
-                <h3 className="text-2xl font-display font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-white/70 mb-6">{service.description}</p>
+                <h3 className="text-xl font-display font-bold text-white mb-3">{service.title}</h3>
+                <p className="text-white/70 text-sm mb-4 line-clamp-3 group-hover:line-clamp-none transition-all duration-300">{service.description}</p>
 
-                <ul className="space-y-2">
+                <ul className="space-y-1.5 transition-all duration-300">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-primary-400">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-3" />
@@ -415,6 +503,13 @@ export const Home: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+
+                <div className="pt-4 border-t border-primary-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button className="flex items-center gap-2 text-primary-500 font-semibold group-hover:gap-3 transition-all">
+                    <span>Saiba Mais</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -590,6 +685,13 @@ export const Home: React.FC = () => {
           </div>
         </Container>
       </Section>
+
+      {/* Service Modal */}
+      <ServiceModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        service={selectedService}
+      />
     </div>
   );
 };
