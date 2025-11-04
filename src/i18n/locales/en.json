@@ -3,7 +3,7 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
-    "portfolio": "Portfolio",
+    "products": "Products",
     "contact": "Contact"
   },
   "home": {
@@ -95,28 +95,40 @@
         "Analytics & Reports"
       ]
     },
+    "printing": {
+      "title": "Printing & Visual Communication",
+      "description": "Complete solutions in visual communication and printing materials to strengthen your brand's physical presence.",
+      "features": [
+        "Store Adhesives",
+        "Banners",
+        "ACM Facades",
+        "Business Cards",
+        "Flyers",
+        "Signs and Lettering"
+      ]
+    },
     "learnMore": "Learn more"
   },
-  "portfolio": {
-    "title": "Portfolio",
-    "subtitle": "Projects that transform businesses",
+  "products": {
+    "title": "Products",
+    "subtitle": "Discover our solutions",
     "viewMore": "View more",
-    "projects": {
-      "ecommerce": {
-        "title": "E-commerce Platform",
-        "description": "Complete online sales platform with administrative dashboard"
+    "items": {
+      "webSites": {
+        "title": "Websites & Web Apps",
+        "description": "Responsive websites and modern web applications with cutting-edge technologies"
       },
-      "corporate": {
-        "title": "Corporate Website",
-        "description": "Modern and responsive institutional website for multinational company"
+      "uiDesign": {
+        "title": "Interface Design",
+        "description": "Intuitive and attractive interfaces that enhance user experience"
       },
-      "app": {
-        "title": "Mobile App",
-        "description": "Mobile application with intuitive and performant interface"
+      "branding": {
+        "title": "Visual Identity",
+        "description": "Creation of logos, brand manuals and complete branding materials"
       },
-      "dashboard": {
-        "title": "Dashboard Analytics",
-        "description": "Analytics panel with real-time data visualization"
+      "printing": {
+        "title": "Printing Materials",
+        "description": "Store adhesives, banners, facades, business cards, flyers and ACM facades"
       }
     }
   },

@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
       }, 50);
 
       // Detect active section (immediate, no debounce)
-      const sections = ['home', 'stats', 'about', 'why-us', 'services', 'portfolio', 'contact'];
+      const sections = ['home', 'stats', 'about', 'why-us', 'services', 'products', 'contact'];
       
       // Map sections to navbar items (stats -> home, why-us -> about)
       const sectionToNavItem: { [key: string]: string } = {
@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
         'about': '#about',
         'why-us': '#about',
         'services': '#services',
-        'portfolio': '#portfolio',
+        'products': '#products',
         'contact': '#contact',
       };
 
@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
     { path: '#home', label: t('navbar.home'), isAnchor: true },
     { path: '#about', label: t('navbar.about'), isAnchor: true },
     { path: '#services', label: t('navbar.services'), isAnchor: true },
-    { path: '#portfolio', label: t('navbar.portfolio'), isAnchor: true },
+    { path: '#products', label: t('navbar.products'), isAnchor: true },
     { path: '#contact', label: t('navbar.contact'), isAnchor: true },
   ];
 

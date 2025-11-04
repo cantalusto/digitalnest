@@ -3,7 +3,7 @@
     "home": "Início",
     "about": "Sobre Nós",
     "services": "Serviços",
-    "portfolio": "Portfólio",
+    "products": "Produtos",
     "contact": "Contato"
   },
   "home": {
@@ -95,28 +95,40 @@
         "Analytics & Reports"
       ]
     },
+    "printing": {
+      "title": "Gráfica & Comunicação Visual",
+      "description": "Soluções completas em comunicação visual e materiais gráficos para fortalecer a presença física da sua marca.",
+      "features": [
+        "Adesivação de Lojas",
+        "Banners",
+        "Fachadas em ACM",
+        "Cartões de Visita",
+        "Panfletos",
+        "Placas e Letreiros"
+      ]
+    },
     "learnMore": "Saiba mais"
   },
-  "portfolio": {
-    "title": "Portfólio",
-    "subtitle": "Projetos que transformam negócios",
+  "products": {
+    "title": "Produtos",
+    "subtitle": "Conheça nossas soluções",
     "viewMore": "Ver mais",
-    "projects": {
-      "ecommerce": {
-        "title": "E-commerce Platform",
-        "description": "Plataforma completa de vendas online com dashboard administrativo"
+    "items": {
+      "webSites": {
+        "title": "Sites e Aplicações Web",
+        "description": "Sites responsivos e aplicações web modernas com as melhores tecnologias"
       },
-      "corporate": {
-        "title": "Corporate Website",
-        "description": "Site institucional moderno e responsivo para empresa multinacional"
+      "uiDesign": {
+        "title": "Design de Interfaces",
+        "description": "Interfaces intuitivas e atraentes que melhoram a experiência do usuário"
       },
-      "app": {
-        "title": "Mobile App",
-        "description": "Aplicativo mobile com interface intuitiva e performática"
+      "branding": {
+        "title": "Identidade Visual",
+        "description": "Criação de logotipos, manuais de marca e materiais de branding completos"
       },
-      "dashboard": {
-        "title": "Dashboard Analytics",
-        "description": "Painel de analytics com visualização de dados em tempo real"
+      "printing": {
+        "title": "Materiais Gráficos",
+        "description": "Adesivação de lojas, banners, fachadas, cartões de visita, panfletos e fachadas em ACM"
       }
     }
   },

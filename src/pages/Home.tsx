@@ -14,6 +14,7 @@ import {
   Megaphone,
   CheckCircle,
   AlertCircle,
+  Printer,
 } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
@@ -189,6 +190,21 @@ export const Home: React.FC = () => {
         'Construção de autoridade no mercado',
       ],
       examples: ['Red Bull', 'Nike', 'Amazon', 'HubSpot', 'Netflix', 'Tesla'],
+    },
+    {
+      id: 'printing',
+      title: t('services.printing.title'),
+      description: t('services.printing.description'),
+      importance:
+        'A comunicação visual física é fundamental para estabelecer presença no mundo real. 85% dos consumidores tomam decisões de compra baseados na aparência visual da loja. Uma fachada bem projetada pode aumentar o tráfego de clientes em até 40%.',
+      benefits: [
+        'Aumento significativo na visibilidade da marca',
+        'Profissionalismo e credibilidade transmitidos',
+        'Atração de clientes através de comunicação visual',
+        'Materiais duráveis e de alta qualidade',
+        'Reforço da identidade visual em todos os pontos',
+      ],
+      examples: ['McDonald\'s', 'Starbucks', 'Magazine Luiza', 'Lojas Renner', 'Havaianas', 'O Boticário'],
     },
   ];
 
@@ -470,6 +486,13 @@ export const Home: React.FC = () => {
                 features: t('services.marketing.features', { returnObjects: true }) as string[],
                 detailsId: 'marketing',
               },
+              {
+                icon: Printer,
+                title: t('services.printing.title'),
+                description: t('services.printing.description'),
+                features: t('services.printing.features', { returnObjects: true }) as string[],
+                detailsId: 'printing',
+              },
             ].map((service, index) => (
               <motion.div
                 key={index}
@@ -516,9 +539,9 @@ export const Home: React.FC = () => {
         </Container>
       </Section>
 
-      {/* Portfolio Section */}
+      {/* Products Section */}
       <Section
-        id="portfolio"
+        id="products"
         className="py-32 bg-dark/30 backdrop-blur-md border-y border-primary-500/10"
       >
         <Container>
@@ -529,32 +552,32 @@ export const Home: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-              {t('portfolio.title')}
+              {t('products.title')}
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">{t('portfolio.subtitle')}</p>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">{t('products.subtitle')}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: t('portfolio.projects.ecommerce.title'),
-                description: t('portfolio.projects.ecommerce.description'),
-                image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800',
+                title: t('products.items.webSites.title'),
+                description: t('products.items.webSites.description'),
+                image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800',
               },
               {
-                title: t('portfolio.projects.corporate.title'),
-                description: t('portfolio.projects.corporate.description'),
-                image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
+                title: t('products.items.uiDesign.title'),
+                description: t('products.items.uiDesign.description'),
+                image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800',
               },
               {
-                title: t('portfolio.projects.app.title'),
-                description: t('portfolio.projects.app.description'),
-                image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800',
+                title: t('products.items.branding.title'),
+                description: t('products.items.branding.description'),
+                image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800',
               },
               {
-                title: t('portfolio.projects.dashboard.title'),
-                description: t('portfolio.projects.dashboard.description'),
-                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
+                title: t('products.items.printing.title'),
+                description: t('products.items.printing.description'),
+                image: 'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=800',
               },
             ].map((project, index) => (
               <motion.div
