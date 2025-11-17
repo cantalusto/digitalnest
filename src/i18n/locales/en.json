@@ -58,42 +58,22 @@
     "webDev": {
       "title": "Web Development",
       "description": "We create modern, responsive and performance-optimized websites and web applications. We use the latest technologies to ensure the best user experience.",
-      "features": [
-        "React & Next.js",
-        "Progressive Web Apps",
-        "E-commerce",
-        "APIs & Integrations"
-      ]
+      "features": ["React & Next.js", "Progressive Web Apps", "E-commerce", "APIs & Integrations"]
     },
     "design": {
       "title": "UI/UX Design",
       "description": "User experience-focused design with intuitive and attractive interfaces. We create visual identities that connect your brand to the audience.",
-      "features": [
-        "Responsive Design",
-        "Prototyping",
-        "Design Systems",
-        "Usability Testing"
-      ]
+      "features": ["Responsive Design", "Prototyping", "Design Systems", "Usability Testing"]
     },
     "branding": {
       "title": "Branding & Identity",
       "description": "We build strong and memorable brands. We develop complete visual identities that communicate the values and essence of your business.",
-      "features": [
-        "Logo & Visual Identity",
-        "Brand Manual",
-        "Graphic Material",
-        "Rebranding"
-      ]
+      "features": ["Logo & Visual Identity", "Brand Manual", "Graphic Material", "Rebranding"]
     },
     "marketing": {
       "title": "Digital Marketing",
       "description": "Digital marketing strategies to increase your online visibility and generate measurable results. From planning to execution.",
-      "features": [
-        "SEO & SEM",
-        "Social Media",
-        "Content Marketing",
-        "Analytics & Reports"
-      ]
+      "features": ["SEO & SEM", "Social Media", "Content Marketing", "Analytics & Reports"]
     },
     "printing": {
       "title": "Printing & Visual Communication",
@@ -129,6 +109,62 @@
       "printing": {
         "title": "Printing Materials",
         "description": "Store adhesives, banners, facades, business cards, flyers and ACM facades"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Plans & Pricing",
+    "subtitle": "Choose the perfect plan for your project",
+    "viewPrices": "View Prices",
+    "requestQuote": "Request Quote",
+    "note": "All prices are estimates. Final price may vary according to your specific project requirements.",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "price": "$300",
+        "description": "Perfect to get started",
+        "features": [
+          "Institutional website (up to 5 pages)",
+          "Responsive design (mobile/tablet/desktop)",
+          "Contact form",
+          "WhatsApp integration",
+          "Basic SEO optimization",
+          "1 month technical support",
+          "Hosting included (1 year)"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$700",
+        "description": "For growing businesses",
+        "features": [
+          "Complete website (up to 10 pages)",
+          "Custom modern design",
+          "Integrated blog",
+          "Admin panel",
+          "Advanced SEO",
+          "Social media integration",
+          "Google Analytics",
+          "3 months technical support",
+          "Premium hosting (1 year)"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "$1,400+",
+        "description": "Complete and scalable solution",
+        "features": [
+          "Complete web application",
+          "Exclusive premium design",
+          "Custom functionalities",
+          "E-commerce (if needed)",
+          "Login/registration system",
+          "Advanced integrations (APIs)",
+          "Performance optimization",
+          "Complete technical SEO",
+          "6 months technical support",
+          "Scalable premium hosting"
+        ]
       }
     }
   },

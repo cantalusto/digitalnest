@@ -58,42 +58,22 @@
     "webDev": {
       "title": "Desenvolvimento Web",
       "description": "Criamos sites e aplicações web modernas, responsivas e otimizadas para performance. Utilizamos as tecnologias mais recentes para garantir a melhor experiência do usuário.",
-      "features": [
-        "React & Next.js",
-        "Progressive Web Apps",
-        "E-commerce",
-        "APIs & Integrações"
-      ]
+      "features": ["React & Next.js", "Progressive Web Apps", "E-commerce", "APIs & Integrações"]
     },
     "design": {
       "title": "Design UI/UX",
       "description": "Design focado na experiência do usuário, com interfaces intuitivas e atraentes. Criamos identidades visuais que conectam sua marca ao público.",
-      "features": [
-        "Design Responsivo",
-        "Prototipagem",
-        "Design Systems",
-        "Testes de Usabilidade"
-      ]
+      "features": ["Design Responsivo", "Prototipagem", "Design Systems", "Testes de Usabilidade"]
     },
     "branding": {
       "title": "Branding & Identidade",
       "description": "Construímos marcas fortes e memoráveis. Desenvolvemos identidades visuais completas que comunicam os valores e a essência do seu negócio.",
-      "features": [
-        "Logo & Identidade Visual",
-        "Manual de Marca",
-        "Material Gráfico",
-        "Rebranding"
-      ]
+      "features": ["Logo & Identidade Visual", "Manual de Marca", "Material Gráfico", "Rebranding"]
     },
     "marketing": {
       "title": "Marketing Digital",
       "description": "Estratégias de marketing digital para aumentar sua visibilidade online e gerar resultados mensuráveis. Do planejamento à execução.",
-      "features": [
-        "SEO & SEM",
-        "Social Media",
-        "Content Marketing",
-        "Analytics & Reports"
-      ]
+      "features": ["SEO & SEM", "Social Media", "Content Marketing", "Analytics & Reports"]
     },
     "printing": {
       "title": "Gráfica & Comunicação Visual",
@@ -129,6 +109,62 @@
       "printing": {
         "title": "Materiais Gráficos",
         "description": "Adesivação de lojas, banners, fachadas, cartões de visita, panfletos e fachadas em ACM"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Planos e Valores",
+    "subtitle": "Escolha o plano ideal para o seu projeto",
+    "viewPrices": "Ver Preços",
+    "requestQuote": "Solicitar Orçamento",
+    "note": "Todos os valores são estimativas. O preço final pode variar de acordo com os requisitos específicos do seu projeto.",
+    "plans": {
+      "basic": {
+        "name": "Básico",
+        "price": "R$ 1.500",
+        "description": "Perfeito para começar",
+        "features": [
+          "Site institucional (até 5 páginas)",
+          "Design responsivo (mobile/tablet/desktop)",
+          "Formulário de contato",
+          "Integração com WhatsApp",
+          "Otimização básica de SEO",
+          "1 mês de suporte técnico",
+          "Hospedagem incluída (1 ano)"
+        ]
+      },
+      "professional": {
+        "name": "Profissional",
+        "price": "R$ 3.500",
+        "description": "Para negócios em crescimento",
+        "features": [
+          "Site completo (até 10 páginas)",
+          "Design personalizado e moderno",
+          "Blog integrado",
+          "Painel administrativo",
+          "SEO avançado",
+          "Integração com redes sociais",
+          "Google Analytics",
+          "3 meses de suporte técnico",
+          "Hospedagem premium (1 ano)"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "R$ 7.000+",
+        "description": "Solução completa e escalável",
+        "features": [
+          "Aplicação web completa",
+          "Design exclusivo e premium",
+          "Funcionalidades customizadas",
+          "E-commerce (se necessário)",
+          "Sistema de login/cadastro",
+          "Integrações avançadas (APIs)",
+          "Otimização de performance",
+          "SEO técnico completo",
+          "6 meses de suporte técnico",
+          "Hospedagem premium escalável"
+        ]
       }
     }
   },

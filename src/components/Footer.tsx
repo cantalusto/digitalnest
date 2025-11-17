@@ -10,7 +10,11 @@ export const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/dgtlnest/', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/digitalnest10/about/', label: 'LinkedIn' },
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/company/digitalnest10/about/',
+      label: 'LinkedIn',
+    },
     { icon: Github, href: 'https://github.com/Digitalnest10', label: 'GitHub' },
   ];
 

@@ -29,16 +29,16 @@ export const Navbar: React.FC = () => {
 
       // Detect active section (immediate, no debounce)
       const sections = ['home', 'stats', 'about', 'why-us', 'services', 'products', 'contact'];
-      
+
       // Map sections to navbar items (stats -> home, why-us -> about)
       const sectionToNavItem: { [key: string]: string } = {
-        'home': '#home',
-        'stats': '#home',
-        'about': '#about',
+        home: '#home',
+        stats: '#home',
+        about: '#about',
         'why-us': '#about',
-        'services': '#services',
-        'products': '#products',
-        'contact': '#contact',
+        services: '#services',
+        products: '#products',
+        contact: '#contact',
       };
 
       for (const section of sections) {

@@ -3,11 +3,13 @@
 ## ✅ O que já está implementado
 
 ### 1. **Arquivos Básicos de SEO**
+
 - ✅ `robots.txt` - Permite que o Google indexe o site
 - ✅ `sitemap.xml` - Mapa do site para facilitar indexação
 - ✅ Meta tags otimizadas no `index.html`
 
 ### 2. **Meta Tags Implementadas**
+
 - ✅ Title otimizado com palavras-chave
 - ✅ Description atrativa e informativa
 - ✅ Keywords relevantes
@@ -17,6 +19,7 @@
 - ✅ Twitter Cards
 
 ### 3. **Otimizações Técnicas**
+
 - ✅ HTML semântico
 - ✅ Estrutura de headings (h1, h2, h3)
 - ✅ Alt text nas imagens
@@ -29,12 +32,14 @@
 ### 1. **Após Deploy no Vercel**
 
 #### A. Registrar no Google Search Console
+
 1. Acesse: https://search.google.com/search-console
 2. Adicione a propriedade: `https://digitalnest.app.br`
 3. Verifique a propriedade (método recomendado: HTML tag ou DNS)
 4. Envie o sitemap: `https://digitalnest.app.br/sitemap.xml`
 
 #### B. Configurar Google Analytics (Opcional mas Recomendado)
+
 1. Crie uma conta em: https://analytics.google.com
 2. Adicione o código de tracking no site
 3. Monitore o tráfego e comportamento dos usuários
@@ -42,20 +47,24 @@
 ### 2. **Verificação de Indexação**
 
 Após 2-3 dias do deploy:
+
 ```
 site:digitalnest.app.br
 ```
+
 Digite isso no Google para ver se o site foi indexado.
 
 ### 3. **Como Acelerar a Indexação**
 
 #### Método 1: Google Search Console
+
 1. Acesse o Search Console
 2. Vá em "Inspeção de URL"
 3. Cole a URL: `https://digitalnest.app.br`
 4. Clique em "Solicitar indexação"
 
 #### Método 2: Compartilhamento
+
 - Compartilhe o link em redes sociais (LinkedIn, Facebook, Twitter)
 - Crie backlinks (link em outros sites apontando para o seu)
 - Envie o link para diretórios de empresas
@@ -63,24 +72,29 @@ Digite isso no Google para ver se o site foi indexado.
 ### 4. **Otimizações Adicionais Recomendadas**
 
 #### A. Criar Blog (Futuro)
+
 - Artigos sobre desenvolvimento web
 - Dicas de design
 - Cases de sucesso
 - Isso aumenta o SEO e traz tráfego orgânico
 
 #### B. Schema Markup (JSON-LD)
+
 Adicionar dados estruturados para:
+
 - Organização
 - Serviços
 - Avaliações
 - Contato
 
 #### C. Performance
+
 - ✅ Já otimizado com Vite
 - ✅ Lazy loading de imagens
 - ✅ Code splitting automático
 
 #### D. Conteúdo
+
 - ✅ Textos descritivos e relevantes
 - ✅ Palavras-chave naturalmente inseridas
 - ⚠️ Manter conteúdo atualizado
@@ -138,6 +152,7 @@ Adicionar dados estruturados para:
 ## 📞 Suporte
 
 Se tiver dúvidas sobre SEO, consulte:
+
 - [Google Search Central](https://developers.google.com/search)
 - [Moz Beginner's Guide to SEO](https://moz.com/beginners-guide-to-seo)
 - [Ahrefs Blog](https://ahrefs.com/blog/)

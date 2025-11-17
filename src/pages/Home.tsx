@@ -19,6 +19,7 @@ import {
 import { Section } from '../components/ui/Section';
 import { Container } from '../components/ui/Container';
 import { ServiceModal } from '../components/ServiceModal';
+import { PricingModal } from '../components/PricingModal';
 import emailjs from '@emailjs/browser';
 
 interface ServiceDetail {
@@ -28,6 +29,14 @@ interface ServiceDetail {
   importance: string;
   benefits: string[];
   examples: string[];
+}
+
+interface PricingPlan {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
 }
 
 export const Home: React.FC = () => {
@@ -41,6 +50,30 @@ export const Home: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+
+  // Pricing plans data
+  const pricingPlans: PricingPlan[] = [
+    {
+      name: t('pricing.plans.basic.name'),
+      price: t('pricing.plans.basic.price'),
+      description: t('pricing.plans.basic.description'),
+      features: t('pricing.plans.basic.features', { returnObjects: true }) as string[],
+    },
+    {
+      name: t('pricing.plans.professional.name'),
+      price: t('pricing.plans.professional.price'),
+      description: t('pricing.plans.professional.description'),
+      features: t('pricing.plans.professional.features', { returnObjects: true }) as string[],
+      highlighted: true,
+    },
+    {
+      name: t('pricing.plans.premium.name'),
+      price: t('pricing.plans.premium.price'),
+      description: t('pricing.plans.premium.description'),
+      features: t('pricing.plans.premium.features', { returnObjects: true }) as string[],
+    },
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -174,7 +207,7 @@ export const Home: React.FC = () => {
         'Diferenciação clara no mercado',
         'Aumento no valor percebido dos produtos/serviços',
       ],
-      examples: ['Coca-Cola', 'Nike', 'Apple', 'Google', 'McDonald\'s', 'Starbucks'],
+      examples: ['Coca-Cola', 'Nike', 'Apple', 'Google', "McDonald's", 'Starbucks'],
     },
     {
       id: 'marketing',
@@ -204,7 +237,14 @@ export const Home: React.FC = () => {
         'Materiais duráveis e de alta qualidade',
         'Reforço da identidade visual em todos os pontos',
       ],
-      examples: ['McDonald\'s', 'Starbucks', 'Magazine Luiza', 'Lojas Renner', 'Havaianas', 'O Boticário'],
+      examples: [
+        "McDonald's",
+        'Starbucks',
+        'Magazine Luiza',
+        'Lojas Renner',
+        'Havaianas',
+        'O Boticário',
+      ],
     },
   ];
 
@@ -451,9 +491,7 @@ export const Home: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
               {t('services.title')}
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              {t('services.subtitle')}
-            </p>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">{t('services.subtitle')}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -516,7 +554,9 @@ export const Home: React.FC = () => {
                 </div>
 
                 <h3 className="text-xl font-display font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-white/70 text-sm mb-4 line-clamp-3 group-hover:line-clamp-none transition-all duration-300">{service.description}</p>
+                <p className="text-white/70 text-sm mb-4 line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
+                  {service.description}
+                </p>
 
                 <ul className="space-y-1.5 transition-all duration-300">
                   {service.features.map((feature, idx) => (
@@ -563,21 +603,25 @@ export const Home: React.FC = () => {
                 title: t('products.items.webSites.title'),
                 description: t('products.items.webSites.description'),
                 image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800',
+                hasPricing: true,
               },
               {
                 title: t('products.items.uiDesign.title'),
                 description: t('products.items.uiDesign.description'),
                 image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800',
+                hasPricing: false,
               },
               {
                 title: t('products.items.branding.title'),
                 description: t('products.items.branding.description'),
                 image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800',
+                hasPricing: false,
               },
               {
                 title: t('products.items.printing.title'),
                 description: t('products.items.printing.description'),
                 image: 'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=800',
+                hasPricing: false,
               },
             ].map((project, index) => (
               <motion.div
@@ -586,8 +630,28 @@ export const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-3xl bg-dark/60 backdrop-blur-md border border-primary-500/20 hover:border-primary-500/40 transition-all cursor-pointer"
+                onClick={() => {
+                  if (project.hasPricing) {
+                    setIsPricingModalOpen(true);
+                  }
+                }}
+                className={`group relative overflow-hidden rounded-3xl bg-dark/60 backdrop-blur-md border border-primary-500/20 hover:border-primary-500/40 transition-all ${
+                  project.hasPricing ? 'cursor-pointer hover:shadow-2xl hover:shadow-primary-500/20' : ''
+                }`}
               >
+                {project.hasPricing && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="bg-gradient-to-r from-primary-500 to-secondary-500 text-dark px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      {t('pricing.viewPrices')}
+                    </motion.div>
+                  </div>
+                )}
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image}
@@ -600,6 +664,12 @@ export const Home: React.FC = () => {
                     {project.title}
                   </h3>
                   <p className="text-white/70">{project.description}</p>
+                  {project.hasPricing && (
+                    <div className="mt-4 flex items-center gap-2 text-primary-500 font-semibold">
+                      <ArrowRight className="w-5 h-5" />
+                      <span>{t('pricing.viewPrices')}</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -714,6 +784,15 @@ export const Home: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         service={selectedService}
+      />
+
+      {/* Pricing Modal */}
+      <PricingModal
+        isOpen={isPricingModalOpen}
+        onClose={() => setIsPricingModalOpen(false)}
+        plans={pricingPlans}
+        title={t('pricing.title')}
+        subtitle={t('pricing.subtitle')}
       />
     </div>
   );
